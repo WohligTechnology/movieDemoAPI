@@ -1,7 +1,7 @@
 var schema = new Schema({
-    name: String,
-    email: { type: String, unqiue: true, validate: validators.isEmail() },
-    password: String,
+    name: { type: String, required: true },
+    email: { type: String, unique: true, validate: validators.isEmail() },
+    password: { type: String, required: true },
     resetToken: String,
     resetTokenExpiry: { type: Date },
     accessToken: { type: String },
@@ -13,7 +13,8 @@ var schema = new Schema({
     ],
     accessLevel: {
         type: String,
-        enum: ["Admin", "User"]
+        enum: ["Admin", "User"],
+        default: "User"
     }
 })
 export default mongoose.model("User", schema)

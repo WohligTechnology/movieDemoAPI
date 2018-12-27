@@ -1,30 +1,28 @@
 export default {
     search(callback) {
-        console.log("in search")
-        Genre.find().exec(callback)
+        Person.find().exec(callback)
     },
     getOne(id, callback) {
-        console.log("abc")
-        Genre.findOne({
+        Person.findOne({
             _id: id
         }).exec(callback)
     },
-    create(name, callback) {
-        var genre = Genre({
-            name: name
-        })
-        genre.save(callback)
+    create(data, callback) {
+        var person = Person(data)
+        person.save(callback)
     },
-    edit(id, name, callback) {
-        Genre.findOne({
+    edit(id, name, image, dob, callback) {
+        Person.findOne({
             _id: id
         }).exec((err, data) => {
             data.name = name
+            data.image = image
+            data.dob = dob
             data.save(callback)
         })
     },
     delete(id, callback) {
-        Genre.deleteOne({
+        Person.deleteOne({
             _id: id
         }).exec(callback)
     }
