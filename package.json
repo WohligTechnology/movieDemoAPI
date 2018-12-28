@@ -74,7 +74,13 @@
             "Schema": true,
             "Student": true,
             "Genre": true,
+            "Person": true,
+            "User": true,
+            "Movie": true,
             "GenreModel": true,
+            "MovieModel": true,
+            "PersonModel": true,
+            "UserModel": true,
             "require": true
         }
     }

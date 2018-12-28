@@ -1,22 +1,23 @@
 export default {
     search(callback) {
-        // console.log("in search")
-        Genre.find().exec(callback)
+        Movie.find().exec(callback)
     },
     getOne(id, callback) {
-        // console.log("abc")
-        Genre.findOne({
+        Movie.findOne({
             _id: id
-        }).exec(callback)
+        }).exec((err, data) => {
+            data.views = data.views + 1
+            data.save(callback)
+        })
     },
     create(name, callback) {
-        var genre = Genre({
+        var movie = Movie({
             name: name
         })
-        genre.save(callback)
+        movie.save(callback)
     },
     edit(id, name, callback) {
-        Genre.findOne({
+        Movie.findOne({
             _id: id
         }).exec((err, data) => {
             data.name = name
@@ -24,7 +25,7 @@ export default {
         })
     },
     delete(id, callback) {
-        Genre.deleteOne({
+        Movie.deleteOne({
             _id: id
         }).exec(callback)
     }

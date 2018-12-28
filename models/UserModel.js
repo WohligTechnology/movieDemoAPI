@@ -1,10 +1,8 @@
 export default {
     search(callback) {
-        console.log("in search")
         User.find().exec(callback)
     },
     getOne(id, callback) {
-        console.log("abc")
         User.findOne({
             _id: id
         }).exec(callback)
